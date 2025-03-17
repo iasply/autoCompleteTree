@@ -1,0 +1,37 @@
+# Use Google style with some custom tweaks for better readability
+BasedOnStyle: Google
+
+# Indentation
+IndentWidth: 4
+TabWidth: 4
+UseTab: Never
+
+# Braces
+BraceWrapping:
+  AfterFunction: true
+  AfterClass: true
+  AfterControlStatement: true
+  AfterEnum: true
+  AfterNamespace: true
+  AfterStruct: true
+  AfterUnion: true
+  BeforeElse: true
+  BeforeCatch: true
+
+
+# Align fields, methods, and parameters for readability
+AlignAfterOpenBracket: true
+AlignConsecutiveAssignments: true
+AlignConsecutiveDeclarations: true
+AlignOperands: true
+
+# Space between function parameters
+SpacesInParentheses: false
+
+# Function declarations
+SpaceBeforeParens: ControlStatements
+SpaceBeforeAssignmentOperators: true
+
+# Line breaks around operators
+BreakBeforeBinaryOperators: NonAssignment
+BreakBeforeTernaryOperators: true
