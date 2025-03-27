@@ -21,6 +21,11 @@ void add(Tree *tree, char *str);
 
 Node *search(Node *node, char *str);
 
-void getAutoComplete(Node *node, char *prefix, DynamicArrChar *arr);
+void getAutoComplete(Node *node, char *prefix, DynamicArrChar *arr,
+                     size_t maxFetch);
 
 void printTree(Node *node, int level);
+
+Tree **loadDictionary();
+
+Tree *getTreeForWord(Tree **trees, const char *word);
