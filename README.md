@@ -74,4 +74,4 @@ CFLAGS := -Wall -Wextra -O1 -I./include -v -L/usr/lib -lcurl -lcjson -DCURL_ON
 ## `-DCURL_ON`
 - Quando você define `CURL_ON` com esta flag, o código irá incluir funcionalidades relacionadas à biblioteca `libcurl` e à API `api.dicionario-aberto.net` para buscar definições de palavras na web.
 - Com a flag `-DCURL_ON` ativada, o programa terá a capacidade de fazer requisições HTTP para a API, obter o conteúdo e processá-lo. Sem ela, essas funcionalidades serão desativadas e o programa funcionará apenas com o dicionário local.
-- Para usar essa funcionalidade, é necessário ter a biblioteca `libcurl` instalada no sistema.
+- Para usar essa funcionalidade, é necessário ter a biblioteca `libcurl` e `libcjson` instalada no sistema.
