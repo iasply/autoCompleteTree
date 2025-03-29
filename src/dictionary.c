@@ -1,10 +1,9 @@
 #include <autoCompleteTree.h>
 #include <dictionary.h>
-#include <time.h>
-#include <util.h>
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <time.h>
+#include <util.h>
 
 bool splitArg(const char *arg, const char delimiter, char **buffer) {
     if (arg == NULL) {
@@ -42,7 +41,6 @@ bool splitArg(const char *arg, const char delimiter, char **buffer) {
     return true;
 }
 
-
 void toStringArgs(Args *args) {
     printDebug("==== Argumentos ====");
 
@@ -63,7 +61,6 @@ void toStringArgs(Args *args) {
 #endif
     printDebug("====================");
 }
-
 
 void printHelp() {
     print("Manual:");
@@ -93,7 +90,6 @@ void printHelp() {
     printf("Parâmetro incompatível com %s\n", ARG_SEARCH);
 #endif
 }
-
 
 void parse(Args *args, char *argv) {
     if (strstr(argv, ARG_HELP)) {
@@ -166,7 +162,6 @@ void parse(Args *args, char *argv) {
         exit(0);
     }
 #endif
-
 }
 
 void processArguments(Args *argList, int argc, char *argv[]) {
@@ -174,7 +169,6 @@ void processArguments(Args *argList, int argc, char *argv[]) {
         parse(argList, argv[i]);
     }
 }
-
 
 void processInputAndExecute(int argc, char *argv[]) {
     if (argc <= 1) {
@@ -198,20 +192,23 @@ void processInputAndExecute(int argc, char *argv[]) {
 }
 
 void executeSearch(Args *argList) {
-    clock_t startTime = clock();
-    Tree **dictionary = loadDictionary();
+    clock_t startTime  = clock();
+    Tree  **dictionary = loadDictionary();
     printDebug("Dicionário carregado com sucesso!");
-    printDebug("Tempo de carregamento: %.6f segundos", getElapsedTime(startTime));
+    printDebug("Tempo de carregamento: %.6f segundos",
+               getElapsedTime(startTime));
 
     Tree *letterTree = getTreeForWord(dictionary, argList->searchString);
     if (!letterTree) {
-        printf("Nenhuma correspondência encontrada para '%s'\n", argList->searchString);
+        printf("Nenhuma correspondência encontrada para '%s'\n",
+               argList->searchString);
         return;
     }
 
     DynamicArrChar arr = {0};
-    startTime = clock();
-    getAutoComplete(letterTree->root, argList->searchString, &arr, argList->maxFetch);
+    startTime          = clock();
+    getAutoComplete(letterTree->root, argList->searchString, &arr,
+                    argList->maxFetch);
     printDebug("Tempo de busca: %.6f segundos", getElapsedTime(startTime));
 
     if (arr.count == 0) {

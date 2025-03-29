@@ -1,10 +1,10 @@
 #include <errno.h>
 #include <limits.h>
+#include <stdarg.h>
 #include <stdbool.h>
 #include <stdio.h>
 #include <time.h>
 #include <util.h>
-#include <stdarg.h>
 
 void print_int(int x) { printf("%d\n", x); }
 

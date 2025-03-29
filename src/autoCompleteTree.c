@@ -9,8 +9,6 @@
 #include <util.h>
 #include <word_arrays.h>
 
-#define UNLIMITED_FETCH 0
-
 Node *createNode(char *str) {
     Node *new = (Node *)calloc(1, sizeof(Node));
     new->str  = strdup(str);
@@ -333,4 +331,55 @@ Tree *getTreeForWord(Tree **trees, const char *word) {
 
     printf("Erro: Caractere não suportado (%c)\n", firstChar);
     return NULL;
+}
+
+Node *findMin(Node *node) {
+    while (node->left) {
+        node = node->left;
+    }
+    return node;
+}
+
+Node *deleteNode(Node *node, char *str, size_t *size) {
+    if (!node) {
+        return NULL;
+    }
+
+    int result = comp(node->str, str);
+
+    if (result > 0) {
+        node->left = deleteNode(node->left, str, size);
+    } else if (result < 0) {
+        node->right = deleteNode(node->right, str, size);
+    } else {
+        if (!node->left) {
+            Node *temp = node->right;
+            free(node->str);
+            free(node);
+            node->str = NULL;
+            node = NULL;
+            (*size)--;
+            return temp;
+        } else if (!node->right) {
+            Node *temp = node->left;
+            free(node->str);
+            free(node);
+            node->str = NULL;
+            node = NULL;
+            (*size)--;
+            return temp;
+        }
+
+        Node *temp = findMin(node->right);
+        free(node->str);
+        node->str   = strdup(temp->str);
+        node->right = deleteNode(node->right, temp->str, size);
+    }
+    return node;
+}
+
+void delete(Tree *tree, char *str) {
+    assert(tree);
+    assert(str);
+    tree->root = deleteNode(tree->root, str, &tree->sizeTree);
 }

@@ -1,5 +1,6 @@
 #define DEBUG_ON 1
 #define CURL_ON 1
+#include <api.h>
 #include <autoCompleteTree.h>
 #include <dynamicArr.h>
 #include <locale.h>
@@ -10,7 +11,6 @@
 #include <time.h>
 #include <util.h>
 #include <word_arrays.h>
-#include <api.h>
 
 void test1() {
     Tree *tree = createTree();
@@ -38,15 +38,15 @@ void test1() {
 }
 
 void test2() {
-    clock_t startTime = clock();
-    Tree **dictionary = loadDictionary();
-    double elapsedTime = getElapsedTime(startTime);
+    clock_t startTime   = clock();
+    Tree  **dictionary  = loadDictionary();
+    double  elapsedTime = getElapsedTime(startTime);
 
     printf("Dicionário carregado com sucesso!\n");
     printf("Tempo de carregamento: %.6f segundos\n", elapsedTime);
 
     DynamicArrChar arr = {0};
-    startTime = clock();
+    startTime          = clock();
     getAutoComplete(dictionary[Q_VALUE]->root, "a", &arr, 0);
     elapsedTime = getElapsedTime(startTime);
 
@@ -58,9 +58,7 @@ void test2() {
     }
 }
 
-void test3() {
-    print("Caractere acentuado: á é í ó ú à ê ô ü ñ ç\n");
-}
+void test3() { print("Caractere acentuado: á é í ó ú à ê ô ü ñ ç\n"); }
 
 void test4() {
 #ifdef CURL_ON
@@ -80,18 +78,46 @@ void test4() {
 #endif
 }
 
+void test5() {
+    Tree *tree = createTree();
+    add(tree, "apple");
+    add(tree, "banana");
+    add(tree, "grape");
+    add(tree, "orange");
+    add(tree, "pear");
+
+    printf("Before deletion:\n");
+    printTree(tree->root, 0);
+
+    delete (tree, "banana");
+    printf("After deleting 'banana':\n");
+    printTree(tree->root, 0);
+
+    delete (tree, "orange");
+    printf("After deleting 'orange':\n");
+    printTree(tree->root, 0);
+
+    delete (tree, "apple");
+    printf("After deleting 'apple':\n");
+    printTree(tree->root, 0);
+
+    free(tree);
+}
+
 void runTests() {
 #ifdef DEBUG_ON
     test1();
     test2();
     test3();
     test4();
+    test5();
 #endif
 }
 
 int main(int argc, char *argv[]) {
     setlocale(LC_ALL, "C.UTF-8");
-    processInputAndExecute(argc, argv);
+
+    // processInputAndExecute(argc, argv);
 
     // Descomente para rodar testes no modo debug
     // runTests();

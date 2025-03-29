@@ -8,14 +8,13 @@
 #include <string.h>
 #include <util.h>
 
-const char *API_URL = "https://api.dicionario-aberto.net/word/";
+const char *API_URL     = "https://api.dicionario-aberto.net/word/";
 const char *DISPLAY_URL = "api.dicionario-aberto.net";
-
 
 size_t write_callback(void *ptr, size_t size, size_t nmemb, char **buffer) {
     size_t total_size = size * nmemb;
     printDebug("Callback: recebendo %zu bytes", total_size);
-    
+
     *buffer = realloc(*buffer, total_size + 1);
     if (*buffer == NULL) {
         fprintf(stderr, "Erro ao alocar memória para o buffer\n");
@@ -25,12 +24,12 @@ size_t write_callback(void *ptr, size_t size, size_t nmemb, char **buffer) {
     memcpy(*buffer, ptr, total_size);
     (*buffer)[total_size] = '\0';
     printDebug("Buffer atualizado: %s", *buffer);
-    
+
     return total_size;
 }
 
 int request(char *word, char **buffer) {
-    #ifdef CURL_ON
+#ifdef CURL_ON
     CURL    *curl;
     CURLcode res;
     char     url[256];
@@ -66,7 +65,7 @@ int request(char *word, char **buffer) {
 
     curl_easy_cleanup(curl);
     curl_global_cleanup();
-#endif 
+#endif
     return 1;
 }
 
@@ -82,7 +81,7 @@ void parseAndDisplayDef(const char *jsonData) {
 
     cJSON *entry = cJSON_GetArrayItem(json, 0);
     if (entry == NULL) {
-        fprintf(stderr, "Nenhuma descrição encontrada em %s\n",DISPLAY_URL);
+        fprintf(stderr, "Nenhuma descrição encontrada em %s\n", DISPLAY_URL);
         cJSON_Delete(json);
         return;
     }
@@ -123,5 +122,5 @@ void parseAndDisplayDef(const char *jsonData) {
     }
 
     cJSON_Delete(json);
-    #endif
+#endif
 }

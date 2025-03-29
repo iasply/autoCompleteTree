@@ -3,6 +3,8 @@
 #include <dynamicArr.h>
 #include <stddef.h>
 
+#define UNLIMITED_FETCH 0
+
 typedef struct Node {
     char        *str;
     struct Node *left;
@@ -29,3 +31,5 @@ void printTree(Node *node, int level);
 Tree **loadDictionary();
 
 Tree *getTreeForWord(Tree **trees, const char *word);
+
+void delete(Tree *tree, char *str);

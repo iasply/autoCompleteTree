@@ -1,5 +1,4 @@
-#ifndef WORD_ARRAYS_H
-#define WORD_ARRAYS_H
+#pragma once
 
 #define A_VALUE 0
 #define B_VALUE A_VALUE + 1
@@ -172,5 +171,3 @@ extern char* y_palavras[1];
 #define Z_MAX_SIZE 17
 #define Z_MAX_COUNT 602
 extern char* z_palavras[602];
-
-#endif  // WORD_ARRAYS_H
