@@ -1,4 +1,4 @@
-# Dicionário de Autocompletar
+# autoCompleteTree
 
 Este projeto implementa um dicionário com funcionalidade de autocompletar e busca de definições utilizando a API `api.dicionario-aberto.net`. O programa pode buscar palavras semelhantes a partir de um prefixo e, opcionalmente, buscar definições online.
 
@@ -15,14 +15,13 @@ Este projeto implementa um dicionário com funcionalidade de autocompletar e bus
 
 ## Compilação e Execução
 
-O projeto utiliza `make` para facilitar a compilação. Certifique-se de ter `clang` instalado.
+O projeto utiliza `make` para facilitar a compilação. Certifique-se de ter `clang` ou `gcc` instalado.
 
 ### Comandos disponíveis
 ```sh
 make        # Compila o projeto
 make run    # Executa o programa
 make clean  # Remove arquivos compilados
-make format # Formata o código-fonte
 ```
 
 ## Uso
