@@ -238,10 +238,6 @@ Tree **loadDictionary() {
     return trees;
 }
 
-#include <ctype.h>
-#include <stdio.h>
-#include <string.h>
-
 Tree *getTreeForWord(Tree **trees, const char *word) {
     if (!word || word[0] == '\0') {
         printf("Erro: Palavra inválida\n");

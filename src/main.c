@@ -1,5 +1,3 @@
-#define DEBUG_ON 1
-#define CURL_ON 1
 #include <api.h>
 #include <autoCompleteTree.h>
 #include <dynamicArr.h>
@@ -117,7 +115,7 @@ void runTests() {
 int main(int argc, char *argv[]) {
     setlocale(LC_ALL, "C.UTF-8");
 
-    // processInputAndExecute(argc, argv);
+    processInputAndExecute(argc, argv);
 
     // Descomente para rodar testes no modo debug
     // runTests();

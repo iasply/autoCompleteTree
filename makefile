@@ -5,9 +5,9 @@ BUILD_DIR := build
 INCLUDE_DIR := include
 
 DEBUG_FLAG := -DDEBUG_ON
-CURL_FLAG := -DCURL_ON
+CURL_FLAG := -lcurl -lcjson -DCURL_ON 
 
-CFLAGS := -Wall -Wextra -O1 -I./$(INCLUDE_DIR) -v -L/usr/lib  -lcurl -lcjson -DCURL_ON
+CFLAGS := -Wall -Wextra -O1 -I./$(INCLUDE_DIR) -v -L/usr/lib  $(CURL_FLAG)
 
 C_SOURCES := $(wildcard $(SRC_DIR)/*.c)
 C_HEADERS := $(wildcard $(INCLUDE_DIR)/*.h)

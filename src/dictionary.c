@@ -87,7 +87,6 @@ void printHelp() {
     print(
         "Utiliza a API do api.dicionario-aberto.net para buscar o "
         "significado.");
-    printf("Parâmetro incompatível com %s\n", ARG_SEARCH);
 #endif
 }
 
@@ -173,7 +172,7 @@ void processArguments(Args *argList, int argc, char *argv[]) {
 void processInputAndExecute(int argc, char *argv[]) {
     if (argc <= 1) {
         printHelp();
-        exit(1);
+        exit(0);
     }
 
     Args argList = {0};
