@@ -66,12 +66,11 @@ CFLAGS := -Wall -Wextra -O1 -I./include -v -L/usr/lib
 ```
 # Explicação das Flags de Compilação
 
-## `-DDEBUG_ON`
+## `$DEBUG_FLAG`
 - Essa flag ativa a definição da macro `DEBUG_ON` durante a compilação.
-- Quando a macro `DEBUG_ON` está definida, o código pode incluir instruções de depuração, como a impressão de mensagens de log que ajudam a identificar o fluxo de execução do programa ou verificar valores de variáveis em tempo de execução.
-- Isso pode ser útil para desenvolvimento e diagnóstico, mas normalmente é desativado em versões finais de produção para evitar sobrecarga de processamento.
+- Logs extras para depuração
 
-## `-DCURL_ON`
+## `$CURL_FLAG`
 - Quando você define `CURL_ON` com esta flag, o código irá incluir funcionalidades relacionadas à biblioteca `libcurl` e à API `api.dicionario-aberto.net` para buscar definições de palavras na web.
 - Com a flag `-DCURL_ON` ativada, o programa terá a capacidade de fazer requisições HTTP para a API, obter o conteúdo e processá-lo. Sem ela, essas funcionalidades serão desativadas e o programa funcionará apenas com o dicionário local.
 - Para usar essa funcionalidade, é necessário ter a biblioteca `libcurl` e `libcjson` instalada no sistema.
