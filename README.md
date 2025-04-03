@@ -62,7 +62,7 @@ O `Makefile` utiliza as seguintes tags de compilação:
 
 ```make
 CC := clang
-CFLAGS := -Wall -Wextra -O1 -I./include -v -L/usr/lib -lcurl -lcjson -DCURL_ON
+CFLAGS := -Wall -Wextra -O1 -I./include -v -L/usr/lib 
 ```
 # Explicação das Flags de Compilação
 
